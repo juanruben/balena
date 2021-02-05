@@ -5,10 +5,10 @@ import Label from './Label';
 import ErrorMessage from './ErrorMessage';
 
 const InputArray = ({id, label, setValue, description, examples, errors}) => {
-    const [tags, setTags] = React.useState([])
+    const [items, setItems] = React.useState([])
 
     const handleChange = (newTags) => {
-        setTags(newTags);
+        setItems(newTags);
         setValue(id, newTags);
     }
 
@@ -18,7 +18,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
             <ReactTagInput
                 id={id}
                 name={id}
-                tags={tags}
+                tags={items}
                 onChange={handleChange}
                 removeOnBackspace
             />
