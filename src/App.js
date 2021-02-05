@@ -1,5 +1,4 @@
 import * as React from 'react';
-import schema from 'data/schema';
 import Form from 'components/Form';
 import Output from 'components/Output';
 import { tw } from 'twind';
@@ -8,7 +7,7 @@ const parseProperties = (properties) => {
     return Object.keys(properties).map((id) => ({id, value: properties[id]}));
 };
 
-const App = () => {
+const App = ({ schema }) => {
     const { type, title, properties } = schema;
     const [data, setData] = React.useState(null);
 
