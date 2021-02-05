@@ -63,7 +63,7 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                                 id={id}
                                 label={value.title || id}
                                 setValue={setValue}
-                                inputRef={register}
+                                required={isRequired}
                                 description={value.description}
                                 examples={value.examples}
                                 errors={errors}

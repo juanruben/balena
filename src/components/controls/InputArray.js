@@ -4,7 +4,7 @@ import "@pathofdev/react-tag-input/build/index.css";
 import Label from './Label';
 import ErrorMessage from './ErrorMessage';
 
-const InputArray = ({id, label, setValue, description, examples, errors}) => {
+const InputArray = ({id, label, setValue, description, examples, errors, required}) => {
     const [items, setItems] = React.useState([])
 
     const handleChange = (newTags) => {
@@ -22,7 +22,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
                 onChange={handleChange}
                 removeOnBackspace
             />
-            <ErrorMessage id={id} errors={errors} />
+            {required && !items.length ? <ErrorMessage id={id} errors={errors} /> : null}
         </>
     );
 }
