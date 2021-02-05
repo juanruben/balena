@@ -9,7 +9,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
 
     const handleChange = (newTags) => {
         setItems(newTags);
-        setValue(id, newTags);
+        setValue(id, newTags.length ? newTags : null);
     }
 
     return (
