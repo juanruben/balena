@@ -6,7 +6,7 @@ import InputString from './InputString';
 import InputSelect from './InputSelect';
 import { tw } from 'twind';
 
-const Form = ({title, controls}) => {
+const Form = ({title, controls, handleAfterSubmit}) => {
     const { register, handleSubmit, setValue, errors } = useForm();
 
     const filterArrayControls = (controls) => {
@@ -85,6 +85,8 @@ const Form = ({title, controls}) => {
 
     const onSubmit = (data) => {
         console.log(data);
+        // ... Actual data submitting
+        handleAfterSubmit(data);
     }
 
     return (
@@ -96,7 +98,7 @@ const Form = ({title, controls}) => {
                         {getControl(item)}
                     </div>
                 ))}
-                <input type="submit" className={tw`cursor-pointer bg-blue-400 text-white text-lg px-4 rounded mt-10`} />
+                <input type="submit" className={tw`cursor-pointer bg-blue-400 text-white text-lg px-6 py-2 rounded mt-10 hover:bg-blue-700`} />
             </form>
         </div>
     );
