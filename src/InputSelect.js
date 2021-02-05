@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import Label from './Label';
+import ErrorMessage from './ErrorMessage';
 
 const InputSelect = ({id, label, description, examples, errors, options, inputRef}) => {
     return (
@@ -10,7 +11,7 @@ const InputSelect = ({id, label, description, examples, errors, options, inputRe
                     <option key={option.const} value={option.const}>{option.title}</option>
                 ))}
             </select>
-            {errors[id] && <div className={tw`text-red-500 text-right text-xs font-light`}>This field is required</div>}
+            <ErrorMessage id={id} errors={errors} />
         </>
     );
 };

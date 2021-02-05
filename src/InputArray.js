@@ -1,8 +1,8 @@
 import * as React from 'react';
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
-import { tw } from 'twind';
 import Label from './Label';
+import ErrorMessage from './ErrorMessage';
 
 const InputArray = ({id, label, setValue, description, examples, errors}) => {
     const [tags, setTags] = React.useState([])
@@ -22,7 +22,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
                 onChange={handleChange}
                 removeOnBackspace
             />
-            {errors[id] && <div className={tw`text-red-500 text-right text-xs font-light`}>This field is required</div>}
+            <ErrorMessage id={id} errors={errors} />
         </>
     );
 }

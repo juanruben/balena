@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import Label from './Label';
+import ErrorMessage from './ErrorMessage';
 
 const InputString = ({id, label, description, examples, errors, inputRef, type, minLength, maxLength}) => {
     return (
@@ -16,7 +17,7 @@ const InputString = ({id, label, description, examples, errors, inputRef, type, 
                 ref={inputRef}
                 className={tw`border py-2 px-3 text-grey-darkest rounded-md w-full`}
             />
-            {errors[id] && <div className={tw`text-red-500 text-right text-xs font-light`}>This field is required</div>}
+            <ErrorMessage id={id} errors={errors} />
         </>
     );
 };
