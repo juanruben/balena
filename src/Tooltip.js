@@ -6,7 +6,12 @@ const Tooltip = ({id, children}) => {
     return (
         <>
             <a className={tw`cursor-pointer pl-2`} data-tip data-for={`${id}-tooltip`}>ⓘ</a>
-            <ReactTooltip id={`${id}-tooltip`} aria-haspopup='true'>
+            <ReactTooltip
+                id={`${id}-tooltip`}
+                border={true}
+                place={'right'}
+                type={'light'}
+            >
                 {children}
             </ReactTooltip>
         </>
