@@ -4,6 +4,7 @@ import InputArray from 'components/controls/InputArray';
 import InputNumber from 'components/controls/InputNumber';
 import InputString from 'components/controls/InputString';
 import InputSelect from 'components/controls/InputSelect';
+import InputBoolean from 'components/controls/InputBoolean';
 import { tw } from 'twind';
 
 const Form = ({title, controls, handleAfterSubmit}) => {
@@ -71,6 +72,15 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                         );
                     }
                     return null;
+            case 'boolean':
+                return (
+                    <InputBoolean
+                        id={id}
+                        label={value.title || id}
+                        inputRef={register()}
+                        description={value.description}
+                    />
+                );
             default:
                 return null;
         }
@@ -82,9 +92,8 @@ const Form = ({title, controls, handleAfterSubmit}) => {
         arrayControls.forEach(function (item) {
             const isRequired = item.value.hasOwnProperty('required') ? item.value.required : true;
             register({ name: item.id }, { required: isRequired });
-            setValue(item.id, null);
         });
-    }, [controls, register, setValue]);
+    }, [controls, register]);
 
     const onSubmit = (data) => {
         console.log(data);
