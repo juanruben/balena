@@ -6,8 +6,8 @@ const InputString = ({id, label, description, examples, errors, inputRef, type, 
     return (
         <>
             <Label id={id} text={label} description={description} examples={examples}>
-                    {minLength && <div><b>Minimum length: </b>{minLength}</div>}
-                    {maxLength && <div><b>Maximum length: </b>{maxLength}</div>}
+                {minLength && <div><b>Minimum length: </b>{minLength}</div>}
+                {maxLength && <div><b>Maximum length: </b>{maxLength}</div>}
             </Label>
             <input
                 name={id}
