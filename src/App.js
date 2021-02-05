@@ -2,16 +2,20 @@ import * as React from 'react';
 import schema from './schema';
 import Form from './Form';
 
+const parseProperties = (properties) => {
+    return Object.keys(properties).map((id) => ({id, value: properties[id]}));
+};
+
 const App = () => {
-    const { properties } = schema;
+    const { type, title, properties } = schema;
 
-    const parseProperties = () => {
-        return Object.keys(properties).map((id) => ({id, value: properties[id]}));
-    };
+    if (type === 'object' && properties) {
+        const controls = parseProperties(properties);
 
-    const controls = parseProperties();
+        return <Form title={title} controls={controls} />;
+    }
 
-    return <Form title={schema.title} controls={controls} />;
+    return <i>Nothing to render</i>
 }
 
 export default App;
