@@ -6,11 +6,7 @@ const App = () => {
     const { properties } = schema;
 
     const parseProperties = () => {
-        let props = [];
-        for(const prop in properties){
-            props.push({id: prop, value: properties[prop]});
-        }
-        return props;
+        return Object.keys(properties).map((id) => ({id, value: properties[id]}));
     };
 
     const controls = parseProperties();
