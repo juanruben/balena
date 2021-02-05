@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import Tooltip from './Tooltip';
+import Info from './Info';
 
 const InputSelect = ({id, label, description, examples, errors, options, inputRef}) => {
     return (
@@ -7,8 +8,7 @@ const InputSelect = ({id, label, description, examples, errors, options, inputRe
             <label htmlFor={id} className={tw`text-sm`}>{label}</label>
             {(description || examples) && (
                 <Tooltip id={`${id}-tooltip`}>
-                    <div>{description}</div>
-                    <div>{examples?.map((item) => <div key={item}>{item}</div>)}</div>
+                    <Info description={description} examples={examples} />
                 </Tooltip>
             )}
             <select name={id} id={id} ref={inputRef} className={tw`border py-2 px-3 text-grey-darkest rounded-md w-full`}>

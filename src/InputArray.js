@@ -3,6 +3,7 @@ import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import { tw } from 'twind';
 import Tooltip from './Tooltip';
+import Info from './Info';
 
 const InputArray = ({id, label, setValue, description, examples, errors}) => {
     const [tags, setTags] = React.useState([])
@@ -17,8 +18,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
             <label htmlFor={id} className={tw`text-sm`}>{label}</label>
             {(description || examples) && (
                 <Tooltip id={`${id}-tooltip`}>
-                    <div>{description}</div>
-                    <div>{examples?.map((item) => <div key={item}>{item}</div>)}</div>
+                    <Info description={description} examples={examples} />
                 </Tooltip>
             )}
             <ReactTagInput
@@ -26,6 +26,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
                 name={id}
                 tags={tags}
                 onChange={handleChange}
+                removeOnBackspace
             />
             {errors[id] && <div className={tw`text-red-500 text-right text-xs font-light`}>This field is required</div>}
         </>

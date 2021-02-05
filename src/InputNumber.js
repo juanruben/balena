@@ -1,5 +1,6 @@
 import { tw } from 'twind';
 import Tooltip from './Tooltip';
+import Info from './Info';
 
 const InputNumber = ({id, label, description, examples, errors, inputRef}) => {
     return (
@@ -7,8 +8,7 @@ const InputNumber = ({id, label, description, examples, errors, inputRef}) => {
             <label htmlFor={id} className={tw`text-sm`}>{label}</label>
             {(description || examples) && (
                 <Tooltip id={`${id}-tooltip`}>
-                    <div>{description}</div>
-                    <div>{examples?.map((item) => <div key={item}>{item}</div>)}</div>
+                    <Info description={description} examples={examples} />
                 </Tooltip>
             )}
             <input
