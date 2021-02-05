@@ -86,6 +86,7 @@ const Form = ({title, controls, handleAfterSubmit}) => {
     const onSubmit = (data) => {
         console.log(data);
         // ... Actual data submitting
+        alert('Sent');
         handleAfterSubmit(data);
     }
 
