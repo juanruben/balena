@@ -5,7 +5,7 @@ import Form from './Form';
 const App = () => {
     const { properties } = schema;
 
-    const getProperties = () => {
+    const parseProperties = () => {
         let props = [];
         for(const prop in properties){
             props.push({id: prop, value: properties[prop]});
@@ -13,7 +13,7 @@ const App = () => {
         return props;
     };
 
-    const controls = getProperties();
+    const controls = parseProperties();
 
     return <Form title={schema.title} controls={controls} />;
 }
