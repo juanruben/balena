@@ -9,6 +9,7 @@ import { tw } from 'twind';
 
 const Form = ({title, controls, handleAfterSubmit}) => {
     const { register, handleSubmit, setValue, errors } = useForm();
+    const [showSuccess, setShowSuccess] = React.useState(false);
 
     const filterArrayControls = (controls) => {
         return controls.filter((item) => item.value.type === 'array');
@@ -95,10 +96,17 @@ const Form = ({title, controls, handleAfterSubmit}) => {
         });
     }, [controls, register]);
 
+    const showSuccessMessage = () => {
+        setShowSuccess(true);
+        setTimeout(() => {
+            setShowSuccess(false);
+        }, 1000);
+    }
+
     const onSubmit = (data) => {
         console.log(data);
         // ... Actual data submitting
-        alert('Sent');
+        showSuccessMessage();
         handleAfterSubmit(data);
     }
 
@@ -111,11 +119,18 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                         {getControl(item)}
                     </div>
                 ))}
-                <input
-                    type="submit"
-                    className={tw`cursor-pointer bg-blue-400 text-white text-lg px-6 py-2 rounded mt-10 hover:bg-blue-700`}
-                    value="Submit"
-                />
+
+                <div className={tw`flex items-baseline justify-between`}>
+                    <input
+                        type="submit"
+                        className={tw`cursor-pointer bg-blue-400 text-white text-lg px-6 py-2 rounded mt-10 hover:bg-blue-700`}
+                        value="Submit"
+                    />
+
+                    <div role="alert" className={tw`h-10 bg-green-100 text-green-900 px-6 py-2 transition-opacity transition ease-linear duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
+                        Successfully sent
+                    </div>
+                </div>
             </form>
         </div>
     );
