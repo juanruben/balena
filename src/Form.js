@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import InputArray from './InputArray';
+import InputNumber from './InputNumber';
 
 const Form = ({title, controls}) => {
 
@@ -14,11 +15,12 @@ const Form = ({title, controls}) => {
         switch(item.value.type){
             case 'number':
                 return (
-                    <label htmlFor={item.id}>{item.value.title || item.id}
-                        <input name={item.id} id={item.id} type="number" min="0" ref={register({ required: true })} />
-                        {item.value.description}
-                        {errors[item.id] && <span>This field is required</span>}
-                    </label>
+                    <InputNumber
+                        id={item.id}
+                        label={item.value.title || item.id}
+                        inputRef={register({ required: true })}
+                        errors={errors}
+                    />
                 );
             case 'string':
                 if (item.value.oneOf?.length) {
