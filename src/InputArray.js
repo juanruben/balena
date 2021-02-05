@@ -2,8 +2,7 @@ import * as React from 'react';
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import { tw } from 'twind';
-import Tooltip from './Tooltip';
-import Info from './Info';
+import Label from './Label';
 
 const InputArray = ({id, label, setValue, description, examples, errors}) => {
     const [tags, setTags] = React.useState([])
@@ -15,12 +14,7 @@ const InputArray = ({id, label, setValue, description, examples, errors}) => {
 
     return (
         <>
-            <label htmlFor={id} className={tw`text-sm`}>{label}</label>
-            {(description || examples) && (
-                <Tooltip id={`${id}-tooltip`}>
-                    <Info description={description} examples={examples} />
-                </Tooltip>
-            )}
+            <Label id={id} text={label} description={description} examples={examples} />
             <ReactTagInput
                 id={id}
                 name={id}

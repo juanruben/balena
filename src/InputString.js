@@ -1,18 +1,13 @@
 import { tw } from 'twind';
-import Tooltip from './Tooltip';
-import Info from './Info';
+import Label from './Label';
 
 const InputString = ({id, label, description, examples, errors, inputRef, type, minLength, maxLength}) => {
     return (
         <>
-            <label htmlFor={id} className={tw`text-sm`}>{label}</label>
-            {(description || examples || minLength || maxLength) && (
-                <Tooltip id={`${id}-tooltip`}>
-                    <Info description={description} examples={examples} />
+            <Label id={id} text={label} description={description} examples={examples}>
                     {minLength && <div><b>Minimum length: </b>{minLength}</div>}
                     {maxLength && <div><b>Maximum length: </b>{maxLength}</div>}
-                </Tooltip>
-            )}
+            </Label>
             <input
                 name={id}
                 type={type}

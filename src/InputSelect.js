@@ -1,16 +1,10 @@
 import { tw } from 'twind';
-import Tooltip from './Tooltip';
-import Info from './Info';
+import Label from './Label';
 
 const InputSelect = ({id, label, description, examples, errors, options, inputRef}) => {
     return (
         <>
-            <label htmlFor={id} className={tw`text-sm`}>{label}</label>
-            {(description || examples) && (
-                <Tooltip id={`${id}-tooltip`}>
-                    <Info description={description} examples={examples} />
-                </Tooltip>
-            )}
+            <Label id={id} text={label} description={description} examples={examples} />
             <select name={id} id={id} ref={inputRef} className={tw`border py-2 px-3 text-grey-darkest rounded-md w-full`}>
                 {options.map((option) => (
                     <option key={option.const} value={option.const}>{option.title}</option>
