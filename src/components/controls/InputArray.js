@@ -9,8 +9,11 @@ const InputArray = ({id, label, setValue, description, examples, errors, require
 
     const handleChange = (newTags) => {
         setItems(newTags);
-        setValue(id, newTags.length ? newTags : null);
     }
+
+    React.useEffect(() => {
+        setValue(id, items.length ? items : null);
+    }, [id, items, setValue])
 
     return (
         <>
