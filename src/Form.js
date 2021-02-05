@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import InputArray from './InputArray';
 import InputNumber from './InputNumber';
+import InputString from './InputString';
 import InputSelect from './InputSelect';
 
 const Form = ({title, controls}) => {
@@ -36,17 +37,15 @@ const Form = ({title, controls}) => {
                     );
                 }
                 return (
-                    <label htmlFor={item.id}>{item.value.title || item.id}
-                        <input
-                            name={item.id}
-                            type={item.value.format === 'date-time' ? "date" : "text"}
-                            minLength={item.value.minLength}
-                            maxLength={item.value.maxLength}
-                            ref={register({ required: true })}
-                        />
-                        {item.value.description}
-                        {errors[item.id] && <span>This field is required</span>}
-                    </label>
+                    <InputString
+                        id={item.id}
+                        label={item.value.title || item.id}
+                        inputRef={register({ required: true })}
+                        minLength={item.value.minLength}
+                        maxLength={item.value.maxLength}
+                        type={item.value.format === 'date-time' ? "date" : "text"}
+                        errors={errors}
+                    />
                 );
             case 'array':
                     if (item.value.items?.type === 'string'){
