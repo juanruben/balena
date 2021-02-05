@@ -20,8 +20,8 @@ const App = () => {
         }
 
         return (
-            <div className={tw`bg-gray-100 py-20`}>
-                <div className={tw`container mx-auto grid grid-cols-2 gap-4`}>
+            <div className={tw`bg-gray-100 py-10`}>
+                <div className={tw`container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4`}>
                     <div className={tw`bg-white shadow-xl rounded-lg p-10`}>
                         <Form title={title} controls={controls} handleAfterSubmit={handleAfterSubmit}/>
                     </div>
