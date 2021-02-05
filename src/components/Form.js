@@ -15,13 +15,15 @@ const Form = ({title, controls, handleAfterSubmit}) => {
 
     const getControl =(item) => {
         const {id, value} = item;
+        const isRequired = value.hasOwnProperty('required') ? value.required : true;
+
         switch(value.type){
             case 'number':
                 return (
                     <InputNumber
                         id={id}
                         label={value.title || id}
-                        inputRef={register({ required: true })}
+                        inputRef={register({ required: isRequired })}
                         description={value.description}
                         examples={value.examples}
                         errors={errors}
@@ -33,7 +35,7 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                         <InputSelect
                             id={id}
                             label={value.title || id}
-                            inputRef={register({ required: true })}
+                            inputRef={register({ required: isRequired })}
                             options={value.oneOf}
                             description={value.description}
                             examples={value.examples}
@@ -45,7 +47,7 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                     <InputString
                         id={id}
                         label={value.title || id}
-                        inputRef={register({ required: true })}
+                        inputRef={register({ required: isRequired })}
                         minLength={value.minLength}
                         maxLength={value.maxLength}
                         description={value.description}
