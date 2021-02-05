@@ -15,7 +15,7 @@ const InputString = ({id, label, description, examples, errors, inputRef, type, 
                 minLength={minLength}
                 maxLength={maxLength}
                 ref={inputRef}
-                className={tw`border py-2 px-3 text-grey-darkest rounded-md w-full`}
+                className={tw`border py-2 px-3 rounded-md w-full`}
             />
             <ErrorMessage id={id} errors={errors} />
         </>
