@@ -1,7 +1,7 @@
 import * as React from 'react';
-import schema from './schema';
-import Form from './Form';
-import Output from './Output';
+import schema from 'data/schema';
+import Form from 'components/Form';
+import Output from 'components/Output';
 import { tw } from 'twind';
 
 const parseProperties = (properties) => {

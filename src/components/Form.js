@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import InputArray from './InputArray';
-import InputNumber from './InputNumber';
-import InputString from './InputString';
-import InputSelect from './InputSelect';
+import InputArray from 'components/controls/InputArray';
+import InputNumber from 'components/controls/InputNumber';
+import InputString from 'components/controls/InputString';
+import InputSelect from 'components/controls/InputSelect';
 import { tw } from 'twind';
 
 const Form = ({title, controls, handleAfterSubmit}) => {
@@ -99,7 +99,11 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                         {getControl(item)}
                     </div>
                 ))}
-                <input type="submit" className={tw`cursor-pointer bg-blue-400 text-white text-lg px-6 py-2 rounded mt-10 hover:bg-blue-700`} />
+                <input
+                    type="submit"
+                    className={tw`cursor-pointer bg-blue-400 text-white text-lg px-6 py-2 rounded mt-10 hover:bg-blue-700`}
+                    value="Submit"
+                />
             </form>
         </div>
     );
