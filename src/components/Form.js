@@ -76,15 +76,15 @@ const Form = ({title, controls, handleAfterSubmit}) => {
         }
     };
 
-    const arrayControls = filterArrayControls(controls);
 
     React.useEffect(() => {
+        const arrayControls = filterArrayControls(controls);
         arrayControls.forEach(function (item) {
             const isRequired = item.value.hasOwnProperty('required') ? item.value.required : true;
             register({ name: item.id }, { required: isRequired });
             setValue(item.id, null);
         });
-    }, [arrayControls, register, setValue]);
+    }, [controls, register, setValue]);
 
     const onSubmit = (data) => {
         console.log(data);
