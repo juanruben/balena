@@ -4,6 +4,7 @@ import InputArray from './InputArray';
 import InputNumber from './InputNumber';
 import InputString from './InputString';
 import InputSelect from './InputSelect';
+import { tw } from 'twind';
 
 const Form = ({title, controls}) => {
     const { register, handleSubmit, setValue, errors } = useForm();
@@ -87,17 +88,17 @@ const Form = ({title, controls}) => {
     }
 
     return (
-        <>
-            <h1>{title}</h1>
+        <div>
+            <h1 className={tw`text-4xl text-blue-400 border-b-1 pb-5 mb-10 border-blue-400`}>{title}</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {controls.map((item) => (
                     <div key={item.id} style={{paddingBottom: '10px'}}>
                         {getControl(item)}
                     </div>
                 ))}
-                <input type="submit" />
+                <input type="submit" className={tw`cursor-pointer bg-blue-400 text-white text-lg px-4 rounded mt-10`} />
             </form>
-        </>
+        </div>
     );
 }
 

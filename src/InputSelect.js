@@ -1,10 +1,11 @@
 import React from 'react';
+import { tw } from 'twind';
 
 const InputSelect = ({id, label, description, examples, errors, options, inputRef}) => {
     return (
         <>
-            <label htmlFor={id} style={{display: 'block'}}>{label}</label>
-            <select name={id} id={id} ref={inputRef} >
+            <label htmlFor={id} className={tw`text-sm`}>{label}</label>
+            <select name={id} id={id} ref={inputRef} className={tw`border py-2 px-3 text-grey-darkest rounded-md w-full`}>
                 {options.map((option) => (
                     <option key={option.const} value={option.const}>{option.title}</option>
                 ))}
