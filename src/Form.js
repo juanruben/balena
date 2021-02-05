@@ -6,7 +6,6 @@ import InputString from './InputString';
 import InputSelect from './InputSelect';
 
 const Form = ({title, controls}) => {
-
     const { register, handleSubmit, setValue, errors } = useForm();
 
     const filterArrayControls = (controls) => {
@@ -14,47 +13,56 @@ const Form = ({title, controls}) => {
     };
 
     const getControl =(item) => {
-        switch(item.value.type){
+        const {id, value} = item;
+        switch(value.type){
             case 'number':
                 return (
                     <InputNumber
-                        id={item.id}
-                        label={item.value.title || item.id}
+                        id={id}
+                        label={value.title || id}
                         inputRef={register({ required: true })}
+                        description={value.description}
+                        examples={value.examples}
                         errors={errors}
                     />
                 );
             case 'string':
-                if (item.value.oneOf?.length) {
+                if (value.oneOf?.length) {
                     return (
                         <InputSelect
-                            id={item.id}
-                            label={item.value.title || item.id}
+                            id={id}
+                            label={value.title || id}
                             inputRef={register({ required: true })}
-                            options={item.value.oneOf}
+                            options={value.oneOf}
+                            description={value.description}
+                            examples={value.examples}
                             errors={errors}
                         />
                     );
                 }
                 return (
                     <InputString
-                        id={item.id}
-                        label={item.value.title || item.id}
+                        id={id}
+                        label={value.title || id}
                         inputRef={register({ required: true })}
-                        minLength={item.value.minLength}
-                        maxLength={item.value.maxLength}
-                        type={item.value.format === 'date-time' ? "date" : "text"}
+                        minLength={value.minLength}
+                        maxLength={value.maxLength}
+                        description={value.description}
+                        examples={value.examples}
+                        type={value.format === 'date-time' ? "date" : "text"}
                         errors={errors}
                     />
                 );
             case 'array':
-                    if (item.value.items?.type === 'string'){
+                    if (value.items?.type === 'string'){
                         return (
                             <InputArray
-                                id={item.id}
-                                label={item.value.title || item.id}
+                                id={id}
+                                label={value.title || id}
                                 setValue={setValue}
                                 inputRef={register}
+                                description={value.description}
+                                examples={value.examples}
                                 errors={errors}
                             />
                         );

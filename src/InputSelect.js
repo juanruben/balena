@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputSelect = ({id, label, description, errors, options, inputRef}) => {
+const InputSelect = ({id, label, description, examples, errors, options, inputRef}) => {
     return (
         <>
             <label htmlFor={id} style={{display: 'block'}}>{label}</label>
@@ -10,7 +10,8 @@ const InputSelect = ({id, label, description, errors, options, inputRef}) => {
                 ))}
             </select>
             {description}
-            {errors[id] && <span>This field is required</span>}
+            {examples?.map((item) => <div key={item}>{item}</div>)}
+            {errors[id] && <div>This field is required</div>}
         </>
     );
 };

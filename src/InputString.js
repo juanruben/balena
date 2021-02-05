@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputString = ({id, label, description, errors, inputRef, type, minLength, maxLength}) => {
+const InputString = ({id, label, description, examples, errors, inputRef, type, minLength, maxLength}) => {
     return (
         <>
             <label htmlFor={id} style={{display: 'block'}}>{label}</label>
@@ -12,7 +12,10 @@ const InputString = ({id, label, description, errors, inputRef, type, minLength,
                 ref={inputRef}
             />
             {description}
-            {errors[id] && <span>This field is required</span>}
+            {examples?.map((item) => <div key={item}>{item}</div>)}
+            {minLength || null}
+            {maxLength || null}
+            {errors[id] && <div>This field is required</div>}
         </>
     );
 };
