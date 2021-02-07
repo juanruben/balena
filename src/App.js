@@ -2,6 +2,7 @@ import * as React from 'react';
 import Form from 'components/Form';
 import Output from 'components/Output';
 import { tw } from 'twind';
+import PropTypes from 'prop-types';
 
 const parseProperties = (properties) => {
     return Object.keys(properties).map((id) => ({id, value: properties[id]}));
@@ -15,7 +16,7 @@ const App = ({ schema }) => {
         const controls = parseProperties(properties);
 
         const handleAfterSubmit = (data) => {
-            setData(JSON.stringify(data, null, 4));
+            setData(data);
         }
 
         return (
@@ -33,6 +34,10 @@ const App = ({ schema }) => {
     }
 
     return <i>Nothing to render</i>
+}
+
+App.propTypes = {
+    schema: PropTypes.instanceOf(Object).isRequired,
 }
 
 export default App;

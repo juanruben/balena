@@ -54,7 +54,7 @@ const Form = ({title, controls, handleAfterSubmit}) => {
                         maxLength={value.maxLength}
                         description={value.description}
                         examples={value.examples}
-                        type={value.format === 'date-time' ? "date" : "text"}
+                        type={value.format === 'date-time' ? "date" : null}
                         errors={errors}
                     />
                 );

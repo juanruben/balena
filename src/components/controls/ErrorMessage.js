@@ -1,4 +1,5 @@
 import { tw } from 'twind';
+import PropTypes from 'prop-types';
 
 const ErrorMessage = ({id, errors}) => {
     if (errors[id]) {
@@ -10,6 +11,11 @@ const ErrorMessage = ({id, errors}) => {
     }
 
     return null;
+};
+
+ErrorMessage.propTypes = {
+    id: PropTypes.string.isRequired,
+    errors: PropTypes.instanceOf(Object),
 };
 
 export default ErrorMessage;
